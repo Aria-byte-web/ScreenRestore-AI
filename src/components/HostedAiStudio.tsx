@@ -5,7 +5,8 @@ const MODEL_URL = 'https://arasg14-pixelrevive-genai.hf.space';
 
 export function HostedAiStudio() {
   return (
-    <section id="ai-studio" className="scroll-mt-20 bg-[#F8F8F6] py-24 md:py-32 hairline-t">
+    <section id="studio" className="scroll-mt-20 bg-[#F8F8F6] py-24 md:py-32 hairline-t">
+      <span id="ai-studio" className="block scroll-mt-20" />
       <div className="editorial-container">
         <Reveal>
           <div className="grid gap-8 md:grid-cols-12 md:items-end">
