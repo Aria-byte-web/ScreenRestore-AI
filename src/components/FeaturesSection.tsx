@@ -4,12 +4,12 @@ import { Reveal } from './Reveal';
 import { getSpecimen, RenderedSpecimen } from '../utils/showcaseRenderer';
 
 const FEATURES = [
-  { index: '01', title: '2× / 4× Enlargement', summary: 'Choose an output scale. The browser creates a larger image using standard Canvas interpolation.' },
-  { index: '02', title: 'Local Browser Preview', summary: 'Preview your image in this page. No AI restoration model runs on the hosted website.' },
-  { index: '03', title: 'Before-and-After Comparison', summary: 'Move the slider to inspect the original beside the enlarged preview.' },
-  { index: '04', title: 'PNG Download', summary: 'Download the enlarged browser preview as a PNG image.' },
-  { index: '05', title: 'Sample Screens', summary: 'Load illustrative interface samples to explore the studio controls.' },
-  { index: '06', title: 'Optional OpenCV Backend', summary: 'The repository includes a separate FastAPI/OpenCV processing path; it is not hosted by this GitHub Pages website.' },
+  { index: '01', title: '2× / 4× Enlargement', summary: 'Choose 2× or 4× enlargement with the pretrained Real-ESRGAN model.' },
+  { index: '02', title: 'Hosted AI Processing', summary: 'Upload a screenshot to the Hugging Face hosted studio, where the neural model processes it.' },
+  { index: '03', title: 'Before-and-After Comparison', summary: 'Compare the model output with your original before downloading.' },
+  { index: '04', title: 'Image Download', summary: 'Save the generated restoration as an image file.' },
+  { index: '05', title: 'Screenshot Support', summary: 'Try your own PNG, JPG, or WebP screenshot in the AI studio.' },
+  { index: '06', title: 'Image Privacy', summary: 'Images are sent to Hugging Face for processing. Avoid sensitive screenshots.' },
 ];
 
 export const FeaturesSection: React.FC = () => {
@@ -25,17 +25,17 @@ export const FeaturesSection: React.FC = () => {
         <div className="editorial-container">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
             <Reveal className="lg:col-span-5">
-              <p className="mb-4 font-mono text-[11px] tracking-[0.2em] uppercase text-[#666660]">Current Features · Browser Preview</p>
+              <p className="mb-4 font-mono text-[11px] tracking-[0.2em] uppercase text-[#666660]">AI Restoration · Hugging Face Hosted</p>
               <h2 className="font-display text-[clamp(2.15rem,4vw,3.4rem)] font-normal leading-[1.06] tracking-[-0.03em] text-[#111111]">Built for Interfaces, Not Generic Photos.</h2>
-              <p className="mt-6 text-base leading-relaxed text-[#555550]">This website enlarges screenshots in your browser and lets you compare the result. It does not reconstruct lost detail or run an AI model.</p>
+              <p className="mt-6 text-base leading-relaxed text-[#555550]">This website connects to a pretrained Real-ESRGAN generative model. It infers plausible detail; inspect small text and logos because they can change.</p>
               <div className="mt-8 grid grid-cols-2 gap-6 pt-8 hairline-t">
                 <div><span className="font-display text-3xl font-normal tracking-[-0.02em] text-[#111111]">2× / 4×</span><p className="mt-1 font-mono text-[11px] tracking-[0.12em] uppercase text-[#666660]">Enlargement Options</p></div>
-                <div><span className="font-display text-3xl font-normal tracking-[-0.02em] text-[#111111]">PNG</span><p className="mt-1 font-mono text-[11px] tracking-[0.12em] uppercase text-[#666660]">Download Format</p></div>
+                <div><span className="font-display text-3xl font-normal tracking-[-0.02em] text-[#111111]">GAN</span><p className="mt-1 font-mono text-[11px] tracking-[0.12em] uppercase text-[#666660]">Pretrained AI Model</p></div>
               </div>
             </Reveal>
             <Reveal delayMs={100} className="lg:col-span-7">
-              {specimen ? <BeforeAfterSlider beforeSrc={specimen.beforeUrl} afterSrc={specimen.afterUrl} beforeAlt="Illustrative interface sample" afterAlt="Illustrative interface sample at a larger browser preview size" beforeLabel="ORIGINAL SAMPLE" afterLabel="ENLARGED PREVIEW" initialPosition={50} aspectClassName="aspect-[16/11]" /> : <div className="aspect-[16/11] w-full animate-pulse bg-[#EAEAEA] hairline-all" />}
-              <p className="mt-3 font-mono text-[11px] tracking-[0.12em] uppercase text-[#666660]">Illustrative sample · Browser-enlarged preview</p>
+              {specimen ? <BeforeAfterSlider beforeSrc={specimen.beforeUrl} afterSrc={specimen.afterUrl} beforeAlt="Illustrative interface sample" afterAlt="Illustrative interface sample at a larger size" beforeLabel="ORIGINAL SAMPLE" afterLabel="ILLUSTRATIVE SAMPLE" initialPosition={50} aspectClassName="aspect-[16/11]" /> : <div className="aspect-[16/11] w-full animate-pulse bg-[#EAEAEA] hairline-all" />}
+              <p className="mt-3 font-mono text-[11px] tracking-[0.12em] uppercase text-[#666660]">Illustrative sample · Not generated by the model</p>
             </Reveal>
           </div>
           <div className="mt-24 grid grid-cols-1 gap-x-12 hairline-t md:grid-cols-2">
