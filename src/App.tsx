@@ -1,21 +1,15 @@
-import { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { ShowcaseSection } from './components/ShowcaseSection';
 import { HowItWorksSection } from './components/HowItWorksSection';
 import { FeaturesSection } from './components/FeaturesSection';
-import { RestorationStudio } from './components/RestorationStudio';
+import { HostedAiStudio } from './components/HostedAiStudio';
 import { FinalCtaAndFooter } from './components/FinalCtaAndFooter';
 import { ShowcaseId } from './utils/showcaseRenderer';
 
 export function App() {
-  const [studioSampleRequest, setStudioSampleRequest] = useState<{
-    id: ShowcaseId;
-    nonce: number;
-  } | null>(null);
-
-  const handleLoadSampleInStudio = (id: ShowcaseId) => {
-    setStudioSampleRequest({ id, nonce: Date.now() });
+  const handleLoadSampleInStudio = (_id: ShowcaseId) => {
+    document.getElementById('ai-studio')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -26,7 +20,7 @@ export function App() {
         <ShowcaseSection onLoadSampleInStudio={handleLoadSampleInStudio} />
         <HowItWorksSection />
         <FeaturesSection />
-        <RestorationStudio externalSampleRequest={studioSampleRequest} />
+        <HostedAiStudio />
       </main>
       <FinalCtaAndFooter />
     </div>
